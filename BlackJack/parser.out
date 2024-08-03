@@ -1,0 +1,210 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> print
+Rule 1     print -> E
+Rule 2     print -> empty
+Rule 3     print -> action
+Rule 4     E -> R EQUALS S
+Rule 5     R -> ID
+Rule 6     S -> L MINUS F
+Rule 7     F -> F PLUS L
+Rule 8     F -> L
+Rule 9     L -> INT
+Rule 10    action -> DOUBLE
+Rule 11    action -> SPLIT
+Rule 12    action -> HIT
+Rule 13    empty -> <empty>
+
+Terminals, with rules where they appear
+
+DOUBLE               : 10
+EQUALS               : 4
+HIT                  : 12
+ID                   : 5
+INT                  : 9
+MINUS                : 6
+PLUS                 : 7
+SPLIT                : 11
+error                : 
+
+Nonterminals, with rules where they appear
+
+E                    : 1
+F                    : 6 7
+L                    : 6 7 8
+R                    : 4
+S                    : 4
+action               : 3
+empty                : 2
+print                : 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . print
+    (1) print -> . E
+    (2) print -> . empty
+    (3) print -> . action
+    (4) E -> . R EQUALS S
+    (13) empty -> .
+    (10) action -> . DOUBLE
+    (11) action -> . SPLIT
+    (12) action -> . HIT
+    (5) R -> . ID
+
+    $end            reduce using rule 13 (empty -> .)
+    DOUBLE          shift and go to state 6
+    SPLIT           shift and go to state 7
+    HIT             shift and go to state 8
+    ID              shift and go to state 9
+
+    print                          shift and go to state 1
+    E                              shift and go to state 2
+    empty                          shift and go to state 3
+    action                         shift and go to state 4
+    R                              shift and go to state 5
+
+state 1
+
+    (0) S' -> print .
+
+
+
+state 2
+
+    (1) print -> E .
+
+    $end            reduce using rule 1 (print -> E .)
+
+
+state 3
+
+    (2) print -> empty .
+
+    $end            reduce using rule 2 (print -> empty .)
+
+
+state 4
+
+    (3) print -> action .
+
+    $end            reduce using rule 3 (print -> action .)
+
+
+state 5
+
+    (4) E -> R . EQUALS S
+
+    EQUALS          shift and go to state 10
+
+
+state 6
+
+    (10) action -> DOUBLE .
+
+    $end            reduce using rule 10 (action -> DOUBLE .)
+
+
+state 7
+
+    (11) action -> SPLIT .
+
+    $end            reduce using rule 11 (action -> SPLIT .)
+
+
+state 8
+
+    (12) action -> HIT .
+
+    $end            reduce using rule 12 (action -> HIT .)
+
+
+state 9
+
+    (5) R -> ID .
+
+    EQUALS          reduce using rule 5 (R -> ID .)
+
+
+state 10
+
+    (4) E -> R EQUALS . S
+    (6) S -> . L MINUS F
+    (9) L -> . INT
+
+    INT             shift and go to state 13
+
+    S                              shift and go to state 11
+    L                              shift and go to state 12
+
+state 11
+
+    (4) E -> R EQUALS S .
+
+    $end            reduce using rule 4 (E -> R EQUALS S .)
+
+
+state 12
+
+    (6) S -> L . MINUS F
+
+    MINUS           shift and go to state 14
+
+
+state 13
+
+    (9) L -> INT .
+
+    MINUS           reduce using rule 9 (L -> INT .)
+    PLUS            reduce using rule 9 (L -> INT .)
+    $end            reduce using rule 9 (L -> INT .)
+
+
+state 14
+
+    (6) S -> L MINUS . F
+    (7) F -> . F PLUS L
+    (8) F -> . L
+    (9) L -> . INT
+
+    INT             shift and go to state 13
+
+    L                              shift and go to state 15
+    F                              shift and go to state 16
+
+state 15
+
+    (8) F -> L .
+
+    PLUS            reduce using rule 8 (F -> L .)
+    $end            reduce using rule 8 (F -> L .)
+
+
+state 16
+
+    (6) S -> L MINUS F .
+    (7) F -> F . PLUS L
+
+    $end            reduce using rule 6 (S -> L MINUS F .)
+    PLUS            shift and go to state 17
+
+
+state 17
+
+    (7) F -> F PLUS . L
+    (9) L -> . INT
+
+    INT             shift and go to state 13
+
+    L                              shift and go to state 18
+
+state 18
+
+    (7) F -> F PLUS L .
+
+    PLUS            reduce using rule 7 (F -> F PLUS L .)
+    $end            reduce using rule 7 (F -> F PLUS L .)
+
