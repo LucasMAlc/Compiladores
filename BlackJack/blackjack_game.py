@@ -30,7 +30,7 @@ class BlackjackGame:
             elif option == 'hold':
                 break
             else:
-                print('Erro: Ação inválida ou não disponível.')
+                print('Ação inválida. Tente outra ação.')
 
         self.calculate_results()
 
